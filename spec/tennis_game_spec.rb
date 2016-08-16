@@ -22,50 +22,52 @@ describe 'A game of tennis' do
     expect(points 'player 2').to eq 3
   end
 
-  context 'when player 1 has 4 points' do
-    before :each do
-      @points = { 'player 1' => 4 }
-    end
-
-    context 'and leads the opponent by 2 points' do
+  describe 'winning' do
+    context 'when player 1 has 4 points' do
       before :each do
-        @points = @points.merge('player 2' => 2)
+        @points = { 'player 1' => 4 }
       end
 
-      it 'confirms player 1 as the winner' do
-        winner = score
+      context 'and leads the opponent by 2 points' do
+        before :each do
+          @points = @points.merge('player 2' => 2)
+        end
 
-        expect(winner).to eq 'player 1'
+        it 'confirms player 1 as the winner' do
+          winner = score
+
+          expect(winner).to eq 'player 1'
+        end
       end
-    end
   
-    context 'and leads the opponent by > 2 points' do
-      before :each do 
-        @points = @points.merge('player 2' => 1)
-      end
+      context 'and leads the opponent by > 2 points' do
+        before :each do 
+          @points = @points.merge('player 2' => 1)
+        end
 
-      it 'confirms player 1 as the winner' do
-        winner = score
+        it 'confirms player 1 as the winner' do
+          winner = score
 
-        expect(winner).to eq 'player 1'
+          expect(winner).to eq 'player 1'
+        end
       end
     end
-  end
 
-  context 'when player 1 has > 4 points' do
-    before :each do
-      @points = { 'player 1' => 5 }
-    end
-
-    context 'and leads the opponent by > 2 points' do
+    context 'when player 1 has > 4 points' do
       before :each do
-        @points = @points.merge('player 2' => 1)
+        @points = { 'player 1' => 5 }
       end
 
-      it 'confirms player 1 as the winner' do
-        winner = score
+      context 'and leads the opponent by > 2 points' do
+        before :each do
+          @points = @points.merge('player 2' => 1)
+        end
 
-        expect(winner).to eq 'player 1'
+        it 'confirms player 1 as the winner' do
+          winner = score
+
+          expect(winner).to eq 'player 1'
+        end
       end
     end
   end
