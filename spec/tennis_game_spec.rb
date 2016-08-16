@@ -16,8 +16,23 @@ describe 'A game of tennis' do
   end
 
   context 'when player 1 has 4 points' do
+    before :each do
+      @points = { 'player 1' => 4 }
+    end
+
     context 'and leads the opponent by 2 points' do
-      it 'confirms player 1 as the winner'
+      before :each do
+        @points = @points.merge('player 2' => 2)
+      end
+
+      it 'confirms player 1 as the winner' do
+        points_difference = @points['player 1'] - @points['player 2']
+        if @points['player 1'] == 4 and points_difference == 2
+          winner = 'player 1'
+        end
+
+        expect(winner).to eq 'player 1'
+      end
     end
   
     context 'and leads the opponent by > 2 points' do
