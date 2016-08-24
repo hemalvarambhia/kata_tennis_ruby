@@ -40,7 +40,7 @@ describe 'A game of tennis' do
           @points = @points.merge('player 2' => 2)
         end
 
-        it 'confirms player 1 as the winner' do
+        it 'declares player 1 as the winner' do
           winner = score
 
           expect(winner).to eq 'player 1'
@@ -52,7 +52,7 @@ describe 'A game of tennis' do
           @points = @points.merge('player 2' => 1)
         end
 
-        it 'confirms player 1 as the winner' do
+        it 'declares player 1 as the winner' do
           winner = score
 
           expect(winner).to eq 'player 1'
@@ -70,7 +70,7 @@ describe 'A game of tennis' do
           @points = @points.merge('player 2' => 1)
         end
 
-        it 'confirms player 1 as the winner' do
+        it 'declares player 1 as the winner' do
           winner = score
 
           expect(winner).to eq 'player 1'
