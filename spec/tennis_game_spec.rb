@@ -22,7 +22,7 @@ describe 'A game of tennis' do
     end
 
     points_difference = points('player 2') - points('player 1')
-    if points('player 2') == 4 and points_difference == 2
+    if points('player 2') == 4 and points_difference >= 2
       return 'player 2'
     end
 
@@ -90,6 +90,16 @@ describe 'A game of tennis' do
       context 'and leads the opponent by 2 points' do
         it 'declares player 2 as the winner' do
           @points = { 'player 1' => 2, 'player 2' => 4 }
+          winner = score
+
+          expect(winner).to eq 'player 2'
+        end
+      end
+
+      context 'and leads the opponent by > 2 points' do
+        it 'declares player 2 as the winner' do
+          @points = { 'player 1' => 0, 'player 2' => 4 } 
+
           winner = score
 
           expect(winner).to eq 'player 2'
