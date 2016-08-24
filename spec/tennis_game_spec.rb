@@ -13,7 +13,7 @@ describe 'A game of tennis' do
       return 'player 1'
     end
 
-    description = { 3 => 40, 2 => 30, 0 => 0 }
+    description = { 3 => 40, 2 => 30, 1 => 15, 0 => 0 }
 
     "#{description[points('player 1')]}-#{description[points('player 2')]}"
   end
@@ -108,7 +108,13 @@ describe 'A game of tennis' do
     end
 
     context 'when both players have 1 point each' do
-      it 'is 15-15'
+      it 'is 15-15' do
+        @points = { 'player 1' => 1, 'player 2' => 1 }
+
+        running_score = score
+
+        expect(running_score).to eq '15-15'
+      end
     end
  
     context 'when both players have 0 points each' do
