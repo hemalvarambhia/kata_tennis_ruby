@@ -8,14 +8,25 @@ describe 'A game of tennis' do
   end
 
   def score
+    winner = find_winner
+    return winner if winner
+
+    description = { 3 => 40, 2 => 30, 1 => 15, 0 => 0 }
+    "#{description[points('player 1')]}-#{description[points('player 2')]}"
+  end
+
+  def find_winner
     points_difference = points('player 1') - points('player 2')
     if points('player 1') >= 4 and points_difference >= 2
       return 'player 1'
     end
 
-    description = { 3 => 40, 2 => 30, 1 => 15, 0 => 0 }
+    points_difference = points('player 2') - points('player 1')
+    if points('player 2') == 4 and points_difference == 2
+      return 'player 2'
+    end
 
-    "#{description[points('player 1')]}-#{description[points('player 2')]}"
+    nil
   end
 
   it "returns player 1's points" do
@@ -71,6 +82,17 @@ describe 'A game of tennis' do
           winner = score
 
           expect(winner).to eq 'player 1'
+        end
+      end
+    end
+
+    context 'when player 2 has 4 points' do
+      context 'and leads the opponent by 2 points' do
+        it 'declares player 2 as the winner' do
+          @points = { 'player 1' => 2, 'player 2' => 4 }
+          winner = score
+
+          expect(winner).to eq 'player 2'
         end
       end
     end
