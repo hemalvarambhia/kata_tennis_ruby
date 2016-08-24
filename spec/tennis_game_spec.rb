@@ -71,4 +71,26 @@ describe 'A game of tennis' do
       end
     end
   end
+
+  describe 'running score' do
+    context 'when player 1 has 3 points and player 2 has 0 points' do
+      it 'is 40-0'
+    end
+
+    context 'when player 1 has 0 points and player 2 has 3 points' do
+      it 'is 0-40'
+    end
+
+    context 'when players 1 and 2 have 2 points each' do
+      it 'is 30-30'
+    end
+
+    context 'when both players have 1 point each' do
+      it 'is 15-15'
+    end
+ 
+    context 'when both players have 0 points each' do
+      it 'is 0-0'
+    end
+  end
 end
