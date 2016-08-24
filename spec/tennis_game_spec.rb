@@ -116,9 +116,5 @@ describe 'A game of tennis' do
         expect(running_score).to eq '15-15'
       end
     end
- 
-    context 'when both players have 0 points each' do
-      it 'is 0-0'
-    end
   end
 end
