@@ -1,8 +1,4 @@
 describe 'A game of tennis' do
-  before :each do
-    @points = { 'player 1' => 0, 'player 2' => 3 }
-  end
-
   def points player
     @points[player]
   end
@@ -27,14 +23,6 @@ describe 'A game of tennis' do
     end
 
     nil
-  end
-
-  it "returns player 1's points" do
-    expect(points 'player 1').to eq 0
-  end
-
-  it "returns player 2's points" do
-    expect(points 'player 2').to eq 3
   end
 
   describe 'winning' do
