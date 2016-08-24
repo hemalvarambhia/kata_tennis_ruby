@@ -10,8 +10,10 @@ describe 'A game of tennis' do
   def score
     points_difference = points('player 1') - points('player 2')
     if points('player 1') >= 4 and points_difference >= 2
-      'player 1'
+      return 'player 1'
     end
+
+    '40-0'
   end
 
   it "returns player 1's points" do
@@ -74,7 +76,13 @@ describe 'A game of tennis' do
 
   describe 'running score' do
     context 'when player 1 has 3 points and player 2 has 0 points' do
-      it 'is 40-0'
+      it 'is 40-0' do
+        @points = {'player 1' => 3, 'player 2' => 0 }
+
+        running_score = score
+
+        expect(running_score).to eq '40-0'
+      end
     end
 
     context 'when player 1 has 0 points and player 2 has 3 points' do
