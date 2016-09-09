@@ -153,4 +153,14 @@ describe 'A game of tennis' do
       end
     end
   end
+
+  describe 'deuce' do
+    describe 'when both players have 3 points' do
+      it 'is deuce'
+    end
+
+    describe 'when both players have > 3 points & there is no lead' do
+      it 'is deuce'
+    end
+  end
 end
