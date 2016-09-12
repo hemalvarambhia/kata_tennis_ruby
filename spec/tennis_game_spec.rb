@@ -2,7 +2,7 @@ describe 'A game of tennis' do
   def score
     winner = find_winner
     return winner if winner
-
+    return 'deuce' if points('player 1') == 3 and points('player 2') == 3
     running_score
   end
 
@@ -156,7 +156,13 @@ describe 'A game of tennis' do
 
   describe 'deuce' do
     describe 'when both players have 3 points' do
-      it 'is deuce'
+      it 'is deuce' do
+        @points = { 'player 1' => 3, 'player 2' => 3 }
+
+        running_score = score
+
+        expect(running_score).to eq 'deuce'
+      end
     end
 
     describe 'when both players have > 3 points & there is no lead' do
