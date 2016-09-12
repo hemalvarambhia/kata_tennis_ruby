@@ -8,7 +8,7 @@ describe 'A game of tennis' do
 
   def deuce?
     points('player 1') >= 3 and points('player 2') >= 3 and
-      points('player 1') - points('player 2') == 0
+      lead('player 1', 'player 2') == 0
   end
 
   def running_score
@@ -17,17 +17,21 @@ describe 'A game of tennis' do
   end
 
   def find_winner
-    points_difference = points('player 1') - points('player 2')
+    points_difference = lead('player 1', 'player 2')
     if points('player 1') >= 4 and points_difference >= 2
       return 'player 1'
     end
 
-    points_difference = points('player 2') - points('player 1')
+    points_difference = lead('player 2', 'player 1')
     if points('player 2') >= 4 and points_difference >= 2
       return 'player 2'
     end
 
     nil
+  end
+
+  def lead(player_1, player_2)
+    points(player_1) - points(player_2)
   end
 
   def points player
