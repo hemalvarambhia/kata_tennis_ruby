@@ -17,13 +17,11 @@ describe 'A game of tennis' do
   end
 
   def find_winner
-    points_difference = lead('player 1', 'player 2')
-    if points('player 1') >= 4 and points_difference >= 2
+    if points('player 1') >= 4 and lead('player 1', 'player 2') >= 2
       return 'player 1'
     end
 
-    points_difference = lead('player 2', 'player 1')
-    if points('player 2') >= 4 and points_difference >= 2
+    if points('player 2') >= 4 and lead('player 2', 'player 1') >= 2
       return 'player 2'
     end
 
