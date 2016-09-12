@@ -3,7 +3,13 @@ describe 'A game of tennis' do
     winner = find_winner
     return winner if winner
     return 'deuce' if deuce?
+    return 'advantage player 1' if advantage_player_1?
     running_score
+  end
+
+  def advantage_player_1?
+    points('player 1') >= 3 and points('player 2') >= 3 and 
+      lead('player 1', 'player 2') == 1
   end
 
   def deuce?
@@ -179,6 +185,22 @@ describe 'A game of tennis' do
         running_score = score
 
         expect(running_score).to eq 'deuce'
+      end
+    end
+  end
+
+  describe 'advantage' do
+    describe 'when both players have >= 3 points' do
+      describe 'and player 1 is leading by 1 point' do
+        it 'declares that player 1 has advantage' do
+          @points = { 'player 1' => 5, 'player 2' => 4 }
+
+          expect(score).to eq 'advantage player 1'
+        end
+      end
+
+      describe 'and player 2 is leading by 1 point' do
+        it 'declares that player 2 has advantage'
       end
     end
   end
