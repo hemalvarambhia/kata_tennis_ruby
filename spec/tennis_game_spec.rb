@@ -2,7 +2,7 @@ describe 'A game of tennis' do
   def score
     winner = find_winner
     return winner if winner
-    return 'deuce' if deuce?
+    return 'deuce' if deuce?('player 1', 'player 2')
     return 'advantage player 1' if advantage?('player 1', 'player 2')
     return 'advantage player 2' if advantage?('player 2', 'player 1')
 
@@ -14,9 +14,9 @@ describe 'A game of tennis' do
       lead(player, opposition) == 1
   end
 
-  def deuce?
-    points('player 1') >= 3 and points('player 2') >= 3 and
-      lead('player 1', 'player 2') == 0
+  def deuce?(player, opposition)
+    points(player) >= 3 and points(opposition) >= 3 and
+      lead(player, opposition) == 0
   end
 
   def running_score
