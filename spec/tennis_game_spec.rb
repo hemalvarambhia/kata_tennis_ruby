@@ -1,6 +1,6 @@
 describe 'A game of tennis' do
   def score
-    winner = find_winner
+    winner = find_winner('player 1', 'player 2')
     return winner if winner
     return 'deuce' if deuce?('player 1', 'player 2')
     return 'advantage player 1' if advantage?('player 1', 'player 2')
@@ -24,10 +24,10 @@ describe 'A game of tennis' do
     "#{description[points('player 1')]}-#{description[points('player 2')]}"
   end
 
-  def find_winner
-    return 'player 1' if won?('player 1', 'player 2')
+  def find_winner(player, opposition)
+    return player if won?(player, opposition)
 
-    return 'player 2' if won?('player 2', 'player 1')
+    return opposition if won?(opposition, player)
 
     nil
   end
