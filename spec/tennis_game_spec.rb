@@ -25,15 +25,19 @@ describe 'A game of tennis' do
   end
 
   def find_winner
-    if points('player 1') >= 4 and lead('player 1', 'player 2') >= 2
+    if won?('player 1', 'player 2')
       return 'player 1'
     end
 
-    if points('player 2') >= 4 and lead('player 2', 'player 1') >= 2
+    if won?('player 2', 'player 1')
       return 'player 2'
     end
 
     nil
+  end
+
+  def won?(winner, opposition)
+    points(winner) >= 4 and lead(winner, opposition) >= 2
   end
 
   def lead(player_1, player_2)
