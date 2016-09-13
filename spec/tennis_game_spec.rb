@@ -44,6 +44,12 @@ describe 'A game of tennis' do
     @points[player]
   end
 
+  describe 'players scoring points' do
+    it 'scores points for player 1'
+
+    it 'scores points for player 2'
+  end
+
   describe 'winning' do
     context 'when player 1 has 4 points' do
       before :each do
