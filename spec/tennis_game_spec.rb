@@ -6,7 +6,7 @@ describe 'A game of tennis' do
     return 'advantage player 1' if advantage?('player 1', 'player 2')
     return 'advantage player 2' if advantage?('player 2', 'player 1')
 
-    running_score
+    running_score('player 1', 'player 2')
   end
   
   def advantage?(player, opposition)
@@ -19,9 +19,9 @@ describe 'A game of tennis' do
       lead(player, opposition) == 0
   end
 
-  def running_score
+  def running_score(player, opposition)
     description = { 3 => 40, 2 => 30, 1 => 15, 0 => 0 }
-    "#{description[points('player 1')]}-#{description[points('player 2')]}"
+    "#{description[points(player)]}-#{description[points(opposition)]}"
   end
 
   def find_winner(player, opposition)
