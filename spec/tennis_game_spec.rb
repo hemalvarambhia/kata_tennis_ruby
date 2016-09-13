@@ -25,13 +25,9 @@ describe 'A game of tennis' do
   end
 
   def find_winner
-    if won?('player 1', 'player 2')
-      return 'player 1'
-    end
+    return 'player 1' if won?('player 1', 'player 2')
 
-    if won?('player 2', 'player 1')
-      return 'player 2'
-    end
+    return 'player 2' if won?('player 2', 'player 1')
 
     nil
   end
