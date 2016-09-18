@@ -8,6 +8,18 @@ describe 'A game of tennis' do
 
     running_score('player 1', 'player 2')
   end
+  
+  def winner_of(player, opposition)
+    return player if won?(player, opposition)
+
+    return opposition if won?(opposition, player)
+
+    nil
+  end
+
+  def won?(winner, opposition)
+    points(winner) >= 4 and lead_between(winner, opposition) >= 2
+  end
 
   def player_with_advantage(player, opposition)
     return 'player 1' if advantage?('player 1', 'player 2')
@@ -24,25 +36,13 @@ describe 'A game of tennis' do
       lead_between(player, opposition) == 0
   end
 
+  def lead_between(player, opposition)
+    points(player) - points(opposition)
+  end
+
   def running_score(player, opposition)
     description = { 3 => 40, 2 => 30, 1 => 15, 0 => 0 }
     "#{description[points(player)]}-#{description[points(opposition)]}"
-  end
-
-  def winner_of(player, opposition)
-    return player if won?(player, opposition)
-
-    return opposition if won?(opposition, player)
-
-    nil
-  end
-
-  def won?(winner, opposition)
-    points(winner) >= 4 and lead_between(winner, opposition) >= 2
-  end
-
-  def lead_between(player_1, player_2)
-    points(player_1) - points(player_2)
   end
 
   def points player
