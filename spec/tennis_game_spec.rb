@@ -3,10 +3,15 @@ describe 'A game of tennis' do
     winner = winner_of('player 1', 'player 2')
     return winner if winner
     return 'deuce' if deuce?('player 1', 'player 2')
-    return 'advantage player 1' if advantage?('player 1', 'player 2')
-    return 'advantage player 2' if advantage?('player 2', 'player 1')
+    player_with_advantage = player_with_advantage('player 1', 'player 2')
+    return "advantage #{player_with_advantage}" if player_with_advantage
 
     running_score('player 1', 'player 2')
+  end
+
+  def player_with_advantage(player, opposition)
+    return 'player 1' if advantage?('player 1', 'player 2')
+    return 'player 2' if advantage?('player 2', 'player 1')
   end
   
   def advantage?(player, opposition)
