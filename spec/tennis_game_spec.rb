@@ -16,12 +16,12 @@ describe 'A game of tennis' do
   
   def advantage?(player, opposition)
     points(player) >= 3 and points(opposition) >= 3 and 
-      lead(player, opposition) == 1
+      lead_between(player, opposition) == 1
   end
 
   def deuce?(player, opposition)
     points(player) >= 3 and points(opposition) >= 3 and
-      lead(player, opposition) == 0
+      lead_between(player, opposition) == 0
   end
 
   def running_score(player, opposition)
@@ -38,10 +38,10 @@ describe 'A game of tennis' do
   end
 
   def won?(winner, opposition)
-    points(winner) >= 4 and lead(winner, opposition) >= 2
+    points(winner) >= 4 and lead_between(winner, opposition) >= 2
   end
 
-  def lead(player_1, player_2)
+  def lead_between(player_1, player_2)
     points(player_1) - points(player_2)
   end
 
