@@ -13,6 +13,8 @@ describe 'A game of tennis' do
 
       running_score('player 1', 'player 2')
     end
+
+    private
   
     def winner_of(player, opposition)
       return player if won?(player, opposition)
