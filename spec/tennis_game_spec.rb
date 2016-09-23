@@ -3,6 +3,10 @@ describe 'A game of tennis' do
     def initialize players
       @points = players
     end
+  
+    def scored_point player
+       @points['player 1'] += 1
+    end
 
     def score
       winner = winner_of('player 1', 'player 2')
@@ -58,7 +62,14 @@ describe 'A game of tennis' do
   end
 
   describe 'players scoring points' do
-    it 'scores points for player 1'
+    it 'scores points for player 1' do
+       @points = { 'player 1' => 0, 'player 2' => 0 }
+       tennis_game = TennisGame.new @points
+
+       tennis_game.scored_point 'player 1'
+
+       expect(@points['player 1']).to eq 1
+    end
 
     it 'scores points for player 2'
   end
