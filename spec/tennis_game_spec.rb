@@ -55,10 +55,6 @@ describe 'A game of tennis' do
     end
   end
 
-  def score
-    TennisGame.new(@points).score
-  end
-
   describe 'players scoring points' do
     it 'scores points for player 1'
 
@@ -77,7 +73,7 @@ describe 'A game of tennis' do
         end
 
         it 'declares player 1 as the winner' do
-          winner = score
+          winner = TennisGame.new(@points).score
 
           expect(winner).to eq 'player 1'
         end
@@ -89,7 +85,7 @@ describe 'A game of tennis' do
         end
 
         it 'declares player 1 as the winner' do
-          winner = score
+          winner = TennisGame.new(@points).score
 
           expect(winner).to eq 'player 1'
         end
@@ -107,7 +103,7 @@ describe 'A game of tennis' do
         end
 
         it 'declares player 1 as the winner' do
-          winner = score
+          winner = TennisGame.new(@points).score
 
           expect(winner).to eq 'player 1'
         end
@@ -118,7 +114,7 @@ describe 'A game of tennis' do
       context 'and leads the opponent by 2 points' do
         it 'declares player 2 as the winner' do
           @points = { 'player 1' => 2, 'player 2' => 4 }
-          winner = score
+          winner = TennisGame.new(@points).score
 
           expect(winner).to eq 'player 2'
         end
@@ -128,7 +124,7 @@ describe 'A game of tennis' do
         it 'declares player 2 as the winner' do
           @points = { 'player 1' => 0, 'player 2' => 4 } 
 
-          winner = score
+          winner = TennisGame.new(@points).score
 
           expect(winner).to eq 'player 2'
         end
@@ -140,7 +136,7 @@ describe 'A game of tennis' do
         it 'declares player 2 as the winner' do
           @points = { 'player 1' => 1, 'player 2' => 5 }
 
-          winner = score     
+          winner = TennisGame.new(@points).score     
 
           expect(winner).to eq 'player 2'
         end
@@ -153,7 +149,7 @@ describe 'A game of tennis' do
       it 'is 40-0' do
         @points = {'player 1' => 3, 'player 2' => 0 }
 
-        running_score = score
+        running_score = TennisGame.new(@points).score
 
         expect(running_score).to eq '40-0'
       end
@@ -163,7 +159,7 @@ describe 'A game of tennis' do
       it 'is 0-40' do
         @points = { 'player 1' => 0, 'player 2' => 3 }
 
-        running_score = score
+        running_score = TennisGame.new(@points).score
 
         expect(running_score).to eq '0-40'
       end
@@ -173,7 +169,7 @@ describe 'A game of tennis' do
       it 'is 30-30' do
         @points = { 'player 1' => 2, 'player 2' => 2 }
 
-        running_score = score
+        running_score = TennisGame.new(@points).score
 
         expect(running_score).to eq '30-30'
       end
@@ -183,7 +179,7 @@ describe 'A game of tennis' do
       it 'is 15-15' do
         @points = { 'player 1' => 1, 'player 2' => 1 }
 
-        running_score = score
+        running_score = TennisGame.new(@points).score
 
         expect(running_score).to eq '15-15'
       end
@@ -195,7 +191,7 @@ describe 'A game of tennis' do
       it 'is deuce' do
         @points = { 'player 1' => 3, 'player 2' => 3 }
 
-        running_score = score
+        running_score = TennisGame.new(@points).score
 
         expect(running_score).to eq 'deuce'
       end
@@ -205,7 +201,7 @@ describe 'A game of tennis' do
       it 'is deuce' do
         @points = { 'player 1' => 4, 'player 2' => 4 }
 
-        running_score = score
+        running_score = TennisGame.new(@points).score
 
         expect(running_score).to eq 'deuce'
       end
@@ -218,7 +214,7 @@ describe 'A game of tennis' do
         it 'declares that player 1 has advantage' do
           @points = { 'player 1' => 4, 'player 2' => 3 }
 
-          expect(score).to eq 'advantage player 1'
+          expect(TennisGame.new(@points).score).to eq 'advantage player 1'
         end
       end
     end
@@ -228,7 +224,7 @@ describe 'A game of tennis' do
         it 'declares that player 1 has advantage' do
           @points = { 'player 1' => 3, 'player 2' => 4 }
 
-          expect(score).to eq 'advantage player 2'
+          expect(TennisGame.new(@points).score).to eq 'advantage player 2'
         end
       end
     end
@@ -238,7 +234,7 @@ describe 'A game of tennis' do
         it 'declares that player 1 has advantage' do
           @points = { 'player 1' => 5, 'player 2' => 4 }
 
-          expect(score).to eq 'advantage player 1'
+          expect(TennisGame.new(@points).score).to eq 'advantage player 1'
         end
       end
 
@@ -246,7 +242,7 @@ describe 'A game of tennis' do
         it 'declares that player 2 has advantage' do
           @points = { 'player 1' => 4, 'player 2' => 5 }
 
-          expect(score).to eq 'advantage player 2'
+          expect(TennisGame.new(@points).score).to eq 'advantage player 2'
         end
       end
     end   
