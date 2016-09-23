@@ -83,13 +83,9 @@ describe 'A game of tennis' do
 
   describe 'winning' do
     context 'when player 1 has 4 points' do
-      before :each do
-        @points = { 'player 1' => 4 }
-      end
-
       context 'and leads the opponent by 2 points' do
         before :each do
-          @points = @points.merge('player 2' => 2)
+          @points = { 'player 1' => 4, 'player 2' => 2 }
         end
 
         it 'declares player 1 as the winner' do
@@ -101,7 +97,7 @@ describe 'A game of tennis' do
   
       context 'and leads the opponent by > 2 points' do
         before :each do 
-          @points = @points.merge('player 2' => 1)
+          @points = { 'player 1' => 4, 'player 2' => 1 }
         end
 
         it 'declares player 1 as the winner' do
