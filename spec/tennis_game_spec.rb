@@ -111,17 +111,9 @@ describe 'A game of tennis' do
     end
 
     context 'when player 1 has > 4 points' do
-      before :each do
-        @points = { 'player 1' => 5 }
-      end
-
       context 'and leads the opponent by > 2 points' do
-        before :each do
-          @points = @points.merge('player 2' => 1)
-        end
-
         it 'declares player 1 as the winner' do
-          winner = TennisGame.new(@points).score
+          winner = TennisGame.new('player 1' => 5, 'player 2' => 1).score
 
           expect(winner).to eq 'player 1'
         end
