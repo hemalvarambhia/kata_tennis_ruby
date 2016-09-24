@@ -85,11 +85,12 @@ describe 'A game of tennis' do
     context 'when player 1 has 4 points' do
       context 'and leads the opponent by 2 points' do
         before :each do
-          @points = { 'player 1' => 4, 'player 2' => 2 }
+          @game = TennisGame.new('player 1' => 0, 'player 2' => 2)
+          4.times { @game.scored_point 'player 1' }
         end
 
         it 'declares player 1 as the winner' do
-          winner = TennisGame.new(@points).score
+          winner = @game.score
 
           expect(winner).to eq 'player 1'
         end
@@ -97,11 +98,12 @@ describe 'A game of tennis' do
   
       context 'and leads the opponent by > 2 points' do
         before :each do 
-          @points = { 'player 1' => 4, 'player 2' => 1 }
+          @game = TennisGame.new('player 1' => 0, 'player 2' => 1)
+          4.times { @game.scored_point 'player 1' }
         end
 
         it 'declares player 1 as the winner' do
-          winner = TennisGame.new(@points).score
+          winner = @game.score
 
           expect(winner).to eq 'player 1'
         end
