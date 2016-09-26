@@ -209,9 +209,9 @@ describe 'A game of tennis' do
     describe 'when player 2 has 3 points' do
       describe 'and player 1 is leading by 1 point' do
         it 'declares that player 1 has advantage' do
-          @points = { 'player 1' => 4, 'player 2' => 3 }
+          score = TennisGame.new('player 1' => 4, 'player 2' => 3).score
 
-          expect(TennisGame.new(@points).score).to eq 'advantage player 1'
+          expect(score).to eq 'advantage player 1'
         end
       end
     end
@@ -219,9 +219,9 @@ describe 'A game of tennis' do
     describe 'when player 1 has 3 points' do
       describe 'and player 2 is leading by 1 point' do
         it 'declares that player 1 has advantage' do
-          @points = { 'player 1' => 3, 'player 2' => 4 }
+          score = TennisGame.new('player 1' => 3, 'player 2' => 4).score
 
-          expect(TennisGame.new(@points).score).to eq 'advantage player 2'
+          expect(score).to eq 'advantage player 2'
         end
       end
     end
@@ -229,17 +229,17 @@ describe 'A game of tennis' do
     describe 'when both players have > 3 points' do
       describe 'and player 1 is leading by 1 point' do
         it 'declares that player 1 has advantage' do
-          @points = { 'player 1' => 5, 'player 2' => 4 }
+          score = TennisGame.new('player 1' => 5, 'player 2' => 4).score
 
-          expect(TennisGame.new(@points).score).to eq 'advantage player 1'
+          expect(score).to eq 'advantage player 1'
         end
       end
 
       describe 'and player 2 is leading by 1 point' do
         it 'declares that player 2 has advantage' do
-          @points = { 'player 1' => 4, 'player 2' => 5 }
+          score = TennisGame.new('player 1' => 4, 'player 2' => 5).score
 
-          expect(TennisGame.new(@points).score).to eq 'advantage player 2'
+          expect(score).to eq 'advantage player 2'
         end
       end
     end   
