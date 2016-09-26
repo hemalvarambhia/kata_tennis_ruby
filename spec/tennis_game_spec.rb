@@ -103,9 +103,10 @@ describe 'A game of tennis' do
   end
 
   describe 'running score' do
+    let(:game) { TennisGame.new('player 1' => 0, 'player 2' => 0) }
+
     context 'when player 1 has 3 points and player 2 has 0 points' do
       it 'is 40-0' do
-        game = TennisGame.new('player 1' => 0, 'player 2' => 0)
         3.times { game.scored_point 'player 1' } 
 
         running_score = game.score
@@ -116,7 +117,6 @@ describe 'A game of tennis' do
 
     context 'when player 1 has 0 points and player 2 has 3 points' do
       it 'is 0-40' do
-        game = TennisGame.new('player 1' => 0, 'player 2' => 0)
         3.times { game.scored_point 'player 2' }
 
         running_score = game.score
@@ -127,7 +127,6 @@ describe 'A game of tennis' do
 
     context 'when players 1 and 2 have 2 points each' do
       it 'is 30-30' do
-        game = TennisGame.new('player 1' => 0, 'player 2' => 0)
         2.times do
           game.scored_point 'player 1'
           game.scored_point 'player 2'
@@ -141,7 +140,6 @@ describe 'A game of tennis' do
 
     context 'when both players have 1 point each' do
       it 'is 15-15' do
-        game = TennisGame.new('player 1' => 0, 'player 2' => 0)
         game.scored_point 'player 1'
         game.scored_point 'player 2'
 
