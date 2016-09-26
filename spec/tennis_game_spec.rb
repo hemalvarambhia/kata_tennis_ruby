@@ -127,10 +127,8 @@ describe 'A game of tennis' do
 
     context 'when players 1 and 2 have 2 points each' do
       it 'is 30-30' do
-        2.times do
-          game.scored_point 'player 1'
-          game.scored_point 'player 2'
-        end
+        2.times { game.scored_point 'player 1' }
+        2.times { game.scored_point 'player 2' }
 
         running_score = game.score 
 
@@ -153,10 +151,8 @@ describe 'A game of tennis' do
     let(:game) { TennisGame.new('player 1' => 0, 'player 2' => 0) }
     describe 'when both players have 3 points' do
       it 'is deuce' do
-        3.times do
-          game.scored_point 'player 1'
-          game.scored_point 'player 2'
-        end
+        3.times { game.scored_point 'player 1' }
+        3.times { game.scored_point 'player 2' }
 
         running_score = game.score
  
@@ -166,10 +162,8 @@ describe 'A game of tennis' do
 
     describe 'when both players have > 3 points & there is no lead' do
       it 'is deuce' do
-        4.times do
-          game.scored_point 'player 1'
-          game.scored_point 'player 2'
-        end
+        4.times { game.scored_point 'player 1' }
+        4.times { game.scored_point 'player 2' }
 
         running_score = game.score
 
