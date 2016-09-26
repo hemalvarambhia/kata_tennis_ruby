@@ -190,19 +190,15 @@ describe 'A game of tennis' do
   describe 'deuce' do
     describe 'when both players have 3 points' do
       it 'is deuce' do
-        @points = { 'player 1' => 3, 'player 2' => 3 }
-
-        running_score = TennisGame.new(@points).score
-
+        running_score = TennisGame.new('player 1' => 3, 'player 2' => 3).score 
+ 
         expect(running_score).to eq 'deuce'
       end
     end
 
     describe 'when both players have > 3 points & there is no lead' do
       it 'is deuce' do
-        @points = { 'player 1' => 4, 'player 2' => 4 }
-
-        running_score = TennisGame.new(@points).score
+        running_score = TennisGame.new('player 1' => 4, 'player 2' => 4).score 
 
         expect(running_score).to eq 'deuce'
       end
