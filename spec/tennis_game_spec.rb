@@ -141,8 +141,11 @@ describe 'A game of tennis' do
 
     context 'when both players have 1 point each' do
       it 'is 15-15' do
-        running_score = TennisGame.new('player 1' => 1, 'player 2' => 1).score
+        game = TennisGame.new('player 1' => 0, 'player 2' => 0)
+        game.scored_point 'player 1'
+        game.scored_point 'player 2'
 
+        running_score = game.score
         expect(running_score).to eq '15-15'
       end
     end
@@ -151,7 +154,13 @@ describe 'A game of tennis' do
   describe 'deuce' do
     describe 'when both players have 3 points' do
       it 'is deuce' do
-        running_score = TennisGame.new('player 1' => 3, 'player 2' => 3).score 
+        game = TennisGame.new('player 1' => 0, 'player 2' => 0)
+        3.times do
+          game.scored_point 'player 1'
+          game.scored_point 'player 2'
+        end
+
+        running_score = game.score
  
         expect(running_score).to eq 'deuce'
       end
@@ -159,7 +168,13 @@ describe 'A game of tennis' do
 
     describe 'when both players have > 3 points & there is no lead' do
       it 'is deuce' do
-        running_score = TennisGame.new('player 1' => 4, 'player 2' => 4).score 
+        game = TennisGame.new('player 1' => 0, 'player 2' => 0)
+        4.times do
+          game.scored_point 'player 1'
+          game.scored_point 'player 2'
+        end
+
+        running_score = game.score
 
         expect(running_score).to eq 'deuce'
       end
