@@ -154,10 +154,11 @@ describe 'A game of tennis' do
   end
 
   describe 'advantage' do
+    let(:game) { TennisGame.new('player 1' => 0, 'player 2' => 0) }
+
     describe 'when player 2 has 3 points' do
       describe 'and player 1 is leading by 1 point' do
         it 'declares that player 1 has advantage' do
-          game = TennisGame.new('player 1' => 0, 'player 2' => 0)
           4.times { game.scored_point 'player 1' }
           3.times { game.scored_point 'player 2' }
 
@@ -169,7 +170,6 @@ describe 'A game of tennis' do
     describe 'when player 1 has 3 points' do
       describe 'and player 2 is leading by 1 point' do
         it 'declares that player 1 has advantage' do
-          game = TennisGame.new('player 1' => 0, 'player 2' => 0)
           4.times { game.scored_point 'player 2' }
           3.times { game.scored_point 'player 1' }
 
@@ -181,7 +181,6 @@ describe 'A game of tennis' do
     describe 'when both players have > 3 points' do
       describe 'and player 1 is leading by 1 point' do
         it 'declares that player 1 has advantage' do
-          game = TennisGame.new('player 1' => 0, 'player 2' => 0)
           5.times { game.scored_point 'player 1' }
           4.times { game.scored_point 'player 2' }
 
@@ -191,7 +190,6 @@ describe 'A game of tennis' do
 
       describe 'and player 2 is leading by 1 point' do
         it 'declares that player 2 has advantage' do
-          game = TennisGame.new('player 1' => 0, 'player 2' => 0)
           5.times { game.scored_point 'player 2' }
           4.times { game.scored_point 'player 1' }
 
