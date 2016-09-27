@@ -30,7 +30,7 @@ describe 'A game of tennis' do
         end
 
         it 'declares player 1 as the winner' do
-          expect(@game.score).to eq 'player 1'
+          expect(@game.score).to eq 'player 1 wins'
         end
       end
   
@@ -42,7 +42,7 @@ describe 'A game of tennis' do
         end
 
         it 'declares player 1 as the winner' do
-          expect(@game.score).to eq 'player 1'
+          expect(@game.score).to eq 'player 1 wins'
         end
       end
     end
@@ -56,7 +56,7 @@ describe 'A game of tennis' do
         end
         
         it 'declares player 1 as the winner' do
-          expect(@game.score).to eq 'player 1'
+          expect(@game.score).to eq 'player 1 wins'
         end
       end
     end
@@ -67,7 +67,7 @@ describe 'A game of tennis' do
           game = TennisGame.new('player 1' => 2, 'player 2' => 0)
           4.times { game.scored_point 'player 2' }
 
-          expect(game.score).to eq 'player 2'
+          expect(game.score).to eq 'player 2 wins'
         end
       end
 
@@ -76,7 +76,7 @@ describe 'A game of tennis' do
           game = TennisGame.new('player 1' => 0, 'player 2' => 0)
           4.times { game.scored_point 'player 2' }
 
-          expect(game.score).to eq 'player 2'
+          expect(game.score).to eq 'player 2 wins'
         end
       end
     end
@@ -87,7 +87,7 @@ describe 'A game of tennis' do
           game = TennisGame.new('player 1' => 1, 'player 2' => 0)
           5.times { game.scored_point 'player 2' }
 
-          expect(game.score).to eq 'player 2'
+          expect(game.score).to eq 'player 2 wins'
         end
       end
     end

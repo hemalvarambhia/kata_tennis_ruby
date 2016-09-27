@@ -9,7 +9,7 @@ class TennisGame
 
   def score
     winner = winner_of('player 1', 'player 2')
-    return winner if winner
+    return "#{winner} wins" if winner
     return 'deuce' if deuce?('player 1', 'player 2')
     player_with_advantage = player_with_advantage('player 1', 'player 2')
     return "advantage #{player_with_advantage}" if player_with_advantage
