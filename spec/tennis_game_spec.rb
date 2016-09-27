@@ -133,6 +133,7 @@ describe 'A game of tennis' do
 
   describe 'deuce' do
     let(:game) { TennisGame.new('player 1' => 0, 'player 2' => 0) }
+
     describe 'when both players have 3 points' do
       it 'is deuce' do
         3.times { game.scored_point 'player 1' }
