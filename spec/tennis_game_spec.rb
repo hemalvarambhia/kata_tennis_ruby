@@ -24,27 +24,25 @@ describe 'A game of tennis' do
     context 'when player 1 has 4 points' do
       context 'and leads the opponent by 2 points' do
         before :each do
-          @game = TennisGame.new('player 1' => 0, 'player 2' => 2)
+          @game = TennisGame.new('player 1' => 0, 'player 2' => 0)
           4.times { @game.scored_point 'player 1' }
+          2.times { @game.scored_point 'player 2' }
         end
 
         it 'declares player 1 as the winner' do
-          winner = @game.score
-
-          expect(winner).to eq 'player 1'
+          expect(@game.score).to eq 'player 1'
         end
       end
   
       context 'and leads the opponent by > 2 points' do
         before :each do 
-          @game = TennisGame.new('player 1' => 0, 'player 2' => 1)
+          @game = TennisGame.new('player 1' => 0, 'player 2' => 0)
           4.times { @game.scored_point 'player 1' }
+          @game.scored_point 'player 2'
         end
 
         it 'declares player 1 as the winner' do
-          winner = @game.score
-
-          expect(winner).to eq 'player 1'
+          expect(@game.score).to eq 'player 1'
         end
       end
     end
@@ -52,14 +50,13 @@ describe 'A game of tennis' do
     context 'when player 1 has > 4 points' do
       context 'and leads the opponent by > 2 points' do
         before :each do
-          @game = TennisGame.new('player 1' => 0, 'player 2' => 1)
+          @game = TennisGame.new('player 1' => 0, 'player 2' => 0)
           5.times { @game.scored_point 'player 1' }
+          @game.scored_point 'player 2'
         end
         
         it 'declares player 1 as the winner' do
-          winner = @game.score
-
-          expect(winner).to eq 'player 1'
+          expect(@game.score).to eq 'player 1'
         end
       end
     end
@@ -70,9 +67,7 @@ describe 'A game of tennis' do
           game = TennisGame.new('player 1' => 2, 'player 2' => 0)
           4.times { game.scored_point 'player 2' }
 
-          winner = game.score
-
-          expect(winner).to eq 'player 2'
+          expect(game.score).to eq 'player 2'
         end
       end
 
@@ -81,9 +76,7 @@ describe 'A game of tennis' do
           game = TennisGame.new('player 1' => 0, 'player 2' => 0)
           4.times { game.scored_point 'player 2' }
 
-          winner = game.score
-
-          expect(winner).to eq 'player 2'
+          expect(game.score).to eq 'player 2'
         end
       end
     end
@@ -94,9 +87,7 @@ describe 'A game of tennis' do
           game = TennisGame.new('player 1' => 1, 'player 2' => 0)
           5.times { game.scored_point 'player 2' }
 
-          winner = game.score
-
-          expect(winner).to eq 'player 2'
+          expect(game.score).to eq 'player 2'
         end
       end
     end
