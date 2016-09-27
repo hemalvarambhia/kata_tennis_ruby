@@ -100,9 +100,7 @@ describe 'A game of tennis' do
       it 'is 40-0' do
         3.times { game.scored_point 'player 1' } 
 
-        running_score = game.score
-
-        expect(running_score).to eq '40-0'
+        expect(game.score).to eq '40-0'
       end
     end
 
@@ -110,9 +108,7 @@ describe 'A game of tennis' do
       it 'is 0-40' do
         3.times { game.scored_point 'player 2' }
 
-        running_score = game.score
-
-        expect(running_score).to eq '0-40'
+        expect(game.score).to eq '0-40'
       end
     end
 
@@ -121,9 +117,7 @@ describe 'A game of tennis' do
         2.times { game.scored_point 'player 1' }
         2.times { game.scored_point 'player 2' }
 
-        running_score = game.score 
-
-        expect(running_score).to eq '30-30' 
+        expect(game.score).to eq '30-30' 
       end
     end
 
@@ -132,8 +126,7 @@ describe 'A game of tennis' do
         game.scored_point 'player 1'
         game.scored_point 'player 2'
 
-        running_score = game.score
-        expect(running_score).to eq '15-15'
+        expect(game.score).to eq '15-15'
       end
     end
   end
@@ -145,9 +138,7 @@ describe 'A game of tennis' do
         3.times { game.scored_point 'player 1' }
         3.times { game.scored_point 'player 2' }
 
-        running_score = game.score
- 
-        expect(running_score).to eq 'deuce'
+        expect(game.score).to eq 'deuce'
       end
     end
 
@@ -156,9 +147,7 @@ describe 'A game of tennis' do
         4.times { game.scored_point 'player 1' }
         4.times { game.scored_point 'player 2' }
 
-        running_score = game.score
-
-        expect(running_score).to eq 'deuce'
+        expect(game.score).to eq 'deuce'
       end
     end
   end
