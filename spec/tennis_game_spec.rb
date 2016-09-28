@@ -64,8 +64,9 @@ describe 'A game of tennis' do
     context 'when player 2 has 4 points' do
       context 'and leads the opponent by 2 points' do
         it 'declares player 2 as the winner' do
-          game = TennisGame.new('player 1' => 2, 'player 2' => 0)
+          game = TennisGame.new('player 1' => 0, 'player 2' => 0)
           4.times { game.scored_point 'player 2' }
+          2.times { game.scored_point 'player 1' }
 
           expect(game.score).to eq 'player 2 wins'
         end
@@ -84,8 +85,9 @@ describe 'A game of tennis' do
     context 'when player 2 has > 4 points' do
       context 'and leads the opponent by > 2 points' do
         it 'declares player 2 as the winner' do
-          game = TennisGame.new('player 1' => 1, 'player 2' => 0)
+          game = TennisGame.new('player 1' => 0, 'player 2' => 0)
           5.times { game.scored_point 'player 2' }
+          game.scored_point 'player 1'
 
           expect(game.score).to eq 'player 2 wins'
         end
