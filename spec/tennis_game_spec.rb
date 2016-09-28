@@ -24,9 +24,12 @@ describe 'A game of tennis' do
     let(:game) { TennisGame.new('player 1' => 0, 'player 2' => 0) }
 
     context 'when player 1 has 4 points' do
+      before :each do
+        4.times { game.scored_point 'player 1' }
+      end
+
       context 'and leads the opponent by 2 points' do
         before :each do
-          4.times { game.scored_point 'player 1' }
           2.times { game.scored_point 'player 2' }
         end
 
@@ -37,7 +40,6 @@ describe 'A game of tennis' do
   
       context 'and leads the opponent by > 2 points' do
         before :each do 
-          4.times { game.scored_point 'player 1' }
           game.scored_point 'player 2'
         end
 
