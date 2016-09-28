@@ -61,19 +61,26 @@ describe 'A game of tennis' do
     end
 
     context 'when player 2 has 4 points' do
-      context 'and leads the opponent by 2 points' do
-        it 'declares player 2 as the winner' do
-          4.times { game.scored_point 'player 2' }
-          2.times { game.scored_point 'player 1' }
+      before(:each) do
+        4.times { game.scored_point 'player 2' } 
+      end
 
+      context 'and leads the opponent by 2 points' do
+        before :each do
+          2.times { game.scored_point 'player 1' }
+        end
+
+        it 'declares player 2 as the winner' do
           expect(game.score).to eq 'player 2 wins'
         end
       end
 
       context 'and leads the opponent by > 2 points' do
-        it 'declares player 2 as the winner' do
-          4.times { game.scored_point 'player 2' }
+        before(:each) do  
+          game.scored_point 'player 1'
+        end
 
+        it 'declares player 2 as the winner' do
           expect(game.score).to eq 'player 2 wins'
         end
       end
@@ -81,10 +88,12 @@ describe 'A game of tennis' do
 
     context 'when player 2 has > 4 points' do
       context 'and leads the opponent by > 2 points' do
-        it 'declares player 2 as the winner' do
+        before :each do
           5.times { game.scored_point 'player 2' }
           game.scored_point 'player 1'
+        end
 
+        it 'declares player 2 as the winner' do
           expect(game.score).to eq 'player 2 wins'
         end
       end
