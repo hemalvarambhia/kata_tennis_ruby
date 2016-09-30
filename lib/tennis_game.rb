@@ -8,23 +8,21 @@ class TennisGame
   end
 
   def score
-    player_1, player_2 = 'player 1', 'player 2'
-
-    winner = winning_player(player_1, player_2)
+    @player_1, @player_2 = 'player 1', 'player 2'
+    winner = winning_player
     return "#{winner} wins" if winner
-    return 'deuce' if deuce?(player_1, player_2)
-    player_with_advantage = player_with_advantage(player_1, player_2)
+    return 'deuce' if deuce?
     return "advantage #{player_with_advantage}" if player_with_advantage
 
-    running_score(player_1, player_2)
+    running_score
   end
 
   private
 
-  def winning_player(player, opposition)
-    return player if won?(player, opposition)
+  def winning_player
+    return @player_1 if won?(@player_1, @player_2)
 
-    return opposition if won?(opposition, player)
+    return @player_2 if won?(@player_2, @player_1)
 
     nil
   end
@@ -33,9 +31,9 @@ class TennisGame
     points(winner) >= 4 and lead_between(winner, opposition) >= 2
   end
 
-  def player_with_advantage(player, opposition)
-    return player if advantage?(player, opposition)
-    return opposition if advantage?(opposition, player)
+  def player_with_advantage
+    return @player_1 if advantage?(@player_1, @player_2)
+    return @player_2 if advantage?(@player_2, @player_1)
   end
   
   def advantage?(player, opposition)
@@ -43,18 +41,18 @@ class TennisGame
       lead_between(player, opposition) == 1
   end
 
-  def deuce?(player, opposition)
-    points(player) >= 3 and points(opposition) >= 3 and
-      lead_between(player, opposition) == 0
+  def deuce?
+    points(@player_1) >= 3 and points(@player_2) >= 3 and
+      lead_between(@player_1, @player_2) == 0
   end
 
   def lead_between(player, opposition)
     points(player) - points(opposition)
   end
 
-  def running_score(player, opposition)
+  def running_score
     description = { 3 => 40, 2 => 30, 1 => 15, 0 => 0 }
-    "#{description[points(player)]}-#{description[points(opposition)]}"
+    "#{description[points(@player_1)]}-#{description[points(@player_2)]}"
   end
 
   def points player
