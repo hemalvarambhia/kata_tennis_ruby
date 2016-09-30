@@ -33,8 +33,8 @@ class TennisGame
   end
 
   def player_with_advantage(player, opposition)
-    return 'player 1' if advantage?('player 1', 'player 2')
-    return 'player 2' if advantage?('player 2', 'player 1')
+    return player if advantage?(player, opposition)
+    return opposition if advantage?(opposition, player)
   end
   
   def advantage?(player, opposition)
