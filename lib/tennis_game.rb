@@ -9,7 +9,8 @@ class TennisGame
 
   def score
     player_1, player_2 = 'player 1', 'player 2'
-    winner = winner_of(player_1, player_2)
+
+    winner = winning_player(player_1, player_2)
     return "#{winner} wins" if winner
     return 'deuce' if deuce?(player_1, player_2)
     player_with_advantage = player_with_advantage(player_1, player_2)
@@ -19,8 +20,8 @@ class TennisGame
   end
 
   private
-  
-  def winner_of(player, opposition)
+
+  def winning_player(player, opposition)
     return player if won?(player, opposition)
 
     return opposition if won?(opposition, player)
