@@ -1,8 +1,8 @@
 class TennisGame
-  def initialize players
-    @points = players
-    @player_1 = 'player 1'
-    @player_2 = 'player 2'
+  def initialize(player_1, player_2)
+    @points = { player_1 => 0, player_2 => 0 }
+    @player_1 = player_1
+    @player_2 = player_2
   end
   
   def scored_point player
