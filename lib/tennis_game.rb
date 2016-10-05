@@ -1,14 +1,19 @@
 class TennisGame
   def initialize players
     @points = players
+    @player_1 = 'player 1'
+    @player_2 = 'player 2'
   end
   
   def scored_point player
      @points[player] += 1
   end
 
+  def points player
+    @points[player]
+  end
+
   def score
-    @player_1, @player_2 = 'player 1', 'player 2'
     winner = winning_player
     return "#{winner} wins" if winner
     return 'deuce' if deuce?
@@ -53,9 +58,5 @@ class TennisGame
   def running_score
     description = { 3 => 40, 2 => 30, 1 => 15, 0 => 0 }
     "#{description[points(@player_1)]}-#{description[points(@player_2)]}"
-  end
-
-  def points player
-    @points[player]
   end
 end

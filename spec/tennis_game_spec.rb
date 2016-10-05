@@ -2,21 +2,19 @@ require 'tennis_game'
 describe 'A game of tennis' do
   describe 'players scoring points' do
     it 'scores points for player 1' do
-      points = { 'player 1' => 0, 'player 2' => 0 }
-      tennis_game = TennisGame.new points
+      tennis_game = TennisGame.new('player 1' => 0, 'player 2' => 0)
 
       tennis_game.scored_point 'player 1'
 
-      expect(points['player 1']).to eq 1
+      expect(tennis_game.points('player 1')).to eq 1
     end
 
     it 'scores points for player 2' do
-      points = { 'player 1' => 0, 'player 2' => 0 }
-      tennis_game = TennisGame.new points
+      tennis_game = TennisGame.new('player 1' => 0, 'player 2' => 0)
 
       2.times { tennis_game.scored_point 'player 2' }
 
-      expect(points['player 2']).to eq 2
+      expect(tennis_game.points('player 2')).to eq 2
     end
   end
 
