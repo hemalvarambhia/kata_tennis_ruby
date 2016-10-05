@@ -1,16 +1,19 @@
 class TennisGame
   def initialize(player_1, player_2)
-    @points = { player_1 => 0, player_2 => 0 }
     @player_1 = player_1
     @player_2 = player_2
+    @players = {
+      player_1 => Player.new(player_1),
+      player_2 => Player.new(player_2)
+    }
   end
   
   def scored_point player
-     @points[player] += 1
+    @players[player].scored_point
   end
 
   def points player
-    @points[player]
+    @players[player].points
   end
 
   def score
@@ -58,5 +61,18 @@ class TennisGame
   def running_score
     description = { 3 => 40, 2 => 30, 1 => 15, 0 => 0 }
     "#{description[points(@player_1)]}-#{description[points(@player_2)]}"
+  end
+
+  class Player
+    attr_reader :points
+    
+    def initialize name
+      @name = name
+      @points = 0
+    end
+
+    def scored_point
+      @points += 1
+    end
   end
 end
