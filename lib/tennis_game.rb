@@ -35,9 +35,9 @@ class TennisGame
     nil
   end
 
-  def won?(winner, opposition)
+  def won?(winner, opponent)
     @players[winner].points >= 4 and
-      @players[winner].lead_over(@players[opposition]) >= 2
+      @players[winner].lead_over(@players[opponent]) >= 2
   end
 
   def player_with_advantage
@@ -45,9 +45,9 @@ class TennisGame
     return @player_2 if advantage?(@player_2, @player_1)
   end
   
-  def advantage?(player, opposition)
-    @players[player].points >= 3 and @players[opposition].points >= 3 and
-      @players[player].lead_over(@players[opposition]) == 1
+  def advantage?(player, opponent)
+    @players[player].points >= 3 and @players[opponent].points >= 3 and
+      @players[player].lead_over(@players[opponent]) == 1
   end
 
   def deuce?
