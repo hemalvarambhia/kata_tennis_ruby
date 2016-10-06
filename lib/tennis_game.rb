@@ -28,16 +28,12 @@ class TennisGame
   private
 
   def winning_player
-    return @player_1 if won?(@player_1, @player_2)
-
-    return @player_2 if won?(@player_2, @player_1)
+    player_1 = @players[@player_1]
+    player_2 = @players[@player_2]
+    return @player_1 if player_1.beat?(player_2)
+    return @player_2 if player_2.beat?(player_1)
 
     nil
-  end
-
-  def won?(winner, opponent)
-    @players[winner].points >= 4 and
-      @players[winner].lead_over(@players[opponent]) >= 2
   end
 
   def player_with_advantage
@@ -71,6 +67,10 @@ class TennisGame
 
     def scored_point
       @points += 1
+    end
+
+    def beat? opponent
+      points >= 4 and lead_over(opponent) >= 2
     end
 
     def lead_over opponent
