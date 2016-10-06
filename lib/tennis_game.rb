@@ -82,8 +82,8 @@ class TennisGame
     end
 
     def points_description
-     description = { 3 => '40', 2 => '30', 1 => '15', 0 => '0' }
-     description[@points]
+      description = { 3 => '40', 2 => '30', 1 => '15', 0 => '0' }
+      description[@points]
     end
   end
 end
