@@ -37,15 +37,12 @@ class TennisGame
   end
 
   def player_with_advantage
-    return @player_1 if advantage?(@player_1, @player_2)
-    return @player_2 if advantage?(@player_2, @player_1)
+    player_1 = @players[@player_1]
+    player_2 = @players[@player_2]
+    return player_1.name if player_1.has_advantage?(player_2)
+    return player_2.name if player_2.has_advantage?(player_1)
   end
   
-  def advantage?(player, opponent)
-    @players[player].points >= 3 and @players[opponent].points >= 3 and
-      @players[player].lead_over(@players[opponent]) == 1
-  end
-
   def deuce?
     @players[@player_1].points >= 3 and @players[@player_1].points >=3 and
       @players[@player_1].lead_over(@players[@player_2]) == 0
@@ -71,6 +68,11 @@ class TennisGame
 
     def beat? opponent
       points >= 4 and lead_over(opponent) >= 2
+    end
+
+    def has_advantage? opponent
+      points >= 3 and opponent.points >= 3 and
+        lead_over(opponent) == 1
     end
 
     def lead_over opponent
