@@ -1,7 +1,5 @@
 class TennisGame
   def initialize(player_1, player_2)
-    @player_1 = player_1
-    @player_2 = player_2
     @players = {
       player_1 => Player.new(player_1),
       player_2 => Player.new(player_2)
@@ -51,12 +49,13 @@ class TennisGame
   private
 
   def player_1
-    @players[@player_1]
+    @players.values[0]
   end
 
   def player_2
-    @players[@player_2]
+    @players.values[1]
   end
+
   class Player
     attr_reader :points, :name
     
