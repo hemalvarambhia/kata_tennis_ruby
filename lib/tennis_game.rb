@@ -28,8 +28,6 @@ class TennisGame
   private
 
   def winning_player
-    player_1 = @players[@player_1]
-    player_2 = @players[@player_2]
     return player_1.name if player_1.beat?(player_2)
     return player_2.name if player_2.beat?(player_1)
 
@@ -37,23 +35,28 @@ class TennisGame
   end
 
   def player_with_advantage
-    player_1 = @players[@player_1]
-    player_2 = @players[@player_2]
     return player_1.name if player_1.has_advantage?(player_2)
     return player_2.name if player_2.has_advantage?(player_1)
   end
   
   def deuce?
-    @players[@player_1].points >= 3 and @players[@player_1].points >=3 and
-      @players[@player_1].lead_over(@players[@player_2]) == 0
+    player_1.points >= 3 and player_2.points >= 3 and
+      player_1.lead_over(player_2) == 0
   end
 
   def running_score
-    player_1 = @players[@player_1]
-    player_2 = @players[@player_2]
     "#{player_1.points_description}-#{player_2.points_description}"
   end
 
+  private
+
+  def player_1
+    @players[@player_1]
+  end
+
+  def player_2
+    @players[@player_2]
+  end
   class Player
     attr_reader :points, :name
     
