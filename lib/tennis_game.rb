@@ -30,8 +30,8 @@ class TennisGame
   def winning_player
     player_1 = @players[@player_1]
     player_2 = @players[@player_2]
-    return @player_1 if player_1.beat?(player_2)
-    return @player_2 if player_2.beat?(player_1)
+    return player_1.name if player_1.beat?(player_2)
+    return player_2.name if player_2.beat?(player_1)
 
     nil
   end
@@ -58,7 +58,7 @@ class TennisGame
   end
 
   class Player
-    attr_reader :points
+    attr_reader :points, :name
     
     def initialize name
       @name = name
