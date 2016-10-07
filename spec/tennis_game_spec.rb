@@ -1,26 +1,22 @@
 require 'tennis_game'
 describe 'A game of tennis' do
+  let(:game) { TennisGame.new('player 1', 'player 2') }
+
   describe 'players scoring points' do
     it 'scores points for player 1' do
-      tennis_game = TennisGame.new('player 1', 'player 2')
+      game.scored_point 'player 1'
 
-      tennis_game.scored_point 'player 1'
-
-      expect(tennis_game.points('player 1')).to eq 1
+      expect(game.points('player 1')).to eq 1
     end
 
     it 'scores points for player 2' do
-      tennis_game = TennisGame.new('player 1', 'player 2')
+      2.times { game.scored_point 'player 2' }
 
-      2.times { tennis_game.scored_point 'player 2' }
-
-      expect(tennis_game.points('player 2')).to eq 2
+      expect(game.points('player 2')).to eq 2
     end
   end
 
   describe 'winning' do
-    let(:game) { TennisGame.new('player 1', 'player 2') }
-
     context 'when player 1 has 4 points' do
       before :each do
         4.times { game.scored_point 'player 1' }
@@ -101,8 +97,6 @@ describe 'A game of tennis' do
   end
 
   describe 'running score' do
-    let(:game) { TennisGame.new('player 1', 'player 2') }
-
     context 'when player 1 has 3 points and player 2 has 0 points' do
       it 'is 40-0' do
         3.times { game.scored_point 'player 1' } 
@@ -139,8 +133,6 @@ describe 'A game of tennis' do
   end
 
   describe 'deuce' do
-    let(:game) { TennisGame.new('player 1', 'player 2') }
-
     describe 'when both players have 3 points' do
       it 'is deuce' do
         3.times { game.scored_point 'player 1' }
@@ -161,8 +153,6 @@ describe 'A game of tennis' do
   end
 
   describe 'advantage' do
-    let(:game) { TennisGame.new('player 1', 'player 2') }
-
     describe 'when player 2 has 3 points' do
       describe 'and player 1 is leading by 1 point' do
         it 'declares that player 1 has advantage' do
